@@ -26,6 +26,7 @@ import { ideCommand } from '../ui/commands/ideCommand.js';
 import { bugCommand } from '../ui/commands/bugCommand.js';
 import { quitCommand } from '../ui/commands/quitCommand.js';
 import { restoreCommand } from '../ui/commands/restoreCommand.js';
+import { providerCommand } from '../ui/commands/providerCommand.js';
 
 const loadBuiltInCommands = async (
   config: Config | null,
@@ -42,6 +43,7 @@ const loadBuiltInCommands = async (
     editorCommand,
     extensionsCommand,
     helpCommand,
+    providerCommand,
     ideCommand(config),
     mcpCommand,
     memoryCommand,
