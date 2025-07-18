@@ -44,8 +44,14 @@ The Gemini CLI requires you to authenticate with Google's AI services. On initia
 - Obtain your API key from DeepSeek.
 - Set the `DEEPSEEK_API_KEY` environment variable. Optionally set `DEEPSEEK_BASE_URL` (defaults to `https://api.deepseek.com/v1`).
   ```bash
-  export DEEPSEEK_API_KEY="YOUR_DEEPSEEK_API_KEY"
+ export DEEPSEEK_API_KEY="YOUR_DEEPSEEK_API_KEY"
   ```
+
+Once your API keys are configured, you can switch between providers at any time using `/provider <provider> [model]`. For example:
+
+```bash
+/provider deepseek deepseek-reasoner
+```
 
 4.  **Vertex AI:**
     - Obtain your Google Cloud API key: [Get an API Key](https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=newuser)

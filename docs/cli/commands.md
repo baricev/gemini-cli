@@ -73,6 +73,10 @@ Slash commands provide meta-level control over the CLI itself.
 - **`/auth`**
   - **Description:** Open a dialog that lets you change the authentication method.
 
+- **`/provider`**
+  - **Description:** Switch the authentication provider and model.
+  - **Usage:** `/provider <google|gemini|vertex|deepseek> [model]`
+
 - **`/about`**
   - **Description:** Show version info. Please share this information when filing issues.
 
