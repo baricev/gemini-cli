@@ -13,6 +13,9 @@ import {
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
 import { GoogleGenAI } from '@google/genai';
 import { Config } from '../config/config.js';
+import { DeepSeekGenerator } from './deepseekGenerator.js';
+
+vi.mock('./deepseekGenerator.js');
 
 vi.mock('../code_assist/codeAssist.js');
 vi.mock('@google/genai');
@@ -60,6 +63,26 @@ describe('createContentGenerator', () => {
     });
     expect(generator).toBe((mockGenerator as GoogleGenAI).models);
   });
+
+  it('should create a DeepSeek content generator', async () => {
+    const MockDeepSeek = vi.mocked(DeepSeekGenerator);
+    MockDeepSeek.mockClear();
+    const generator = await createContentGenerator(
+      {
+        model: 'deepseek-chat',
+        apiKey: 'ds-key',
+        authType: AuthType.USE_DEEPSEEK,
+        baseUrl: 'https://api.deepseek.com/v1',
+      },
+      mockConfig,
+    );
+    expect(MockDeepSeek).toHaveBeenCalledWith(
+      'ds-key',
+      'deepseek-chat',
+      'https://api.deepseek.com/v1',
+    );
+    expect(generator).toBeInstanceOf(DeepSeekGenerator);
+  });
 });
 
 describe('createContentGeneratorConfig', () => {
@@ -102,6 +125,25 @@ describe('createContentGeneratorConfig', () => {
     );
     expect(config.apiKey).toBeUndefined();
     expect(config.vertexai).toBeUndefined();
+  });
+
+  it('should configure for DeepSeek when DEEPSEEK_API_KEY is set', async () => {
+    process.env.DEEPSEEK_API_KEY = 'ds-key';
+    const config = await createContentGeneratorConfig(
+      mockConfig,
+      AuthType.USE_DEEPSEEK,
+    );
+    expect(config.apiKey).toBe('ds-key');
+    expect(config.baseUrl).toBe('https://api.deepseek.com/v1');
+  });
+
+  it('should not configure for DeepSeek if DEEPSEEK_API_KEY is empty', async () => {
+    process.env.DEEPSEEK_API_KEY = '';
+    const config = await createContentGeneratorConfig(
+      mockConfig,
+      AuthType.USE_DEEPSEEK,
+    );
+    expect(config.apiKey).toBeUndefined();
   });
 
   it('should configure for Vertex AI using GOOGLE_API_KEY when set', async () => {
