@@ -39,7 +39,15 @@ The Gemini CLI requires you to authenticate with Google's AI services. On initia
         source ~/.bashrc
         ```
 
-3.  **Vertex AI:**
+3.  **DeepSeek API Key:**
+
+- Obtain your API key from DeepSeek.
+- Set the `DEEPSEEK_API_KEY` environment variable. Optionally set `DEEPSEEK_BASE_URL` (defaults to `https://api.deepseek.com/v1`).
+  ```bash
+  export DEEPSEEK_API_KEY="YOUR_DEEPSEEK_API_KEY"
+  ```
+
+4.  **Vertex AI:**
     - Obtain your Google Cloud API key: [Get an API Key](https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=newuser)
       - Set the `GOOGLE_API_KEY` environment variable. In the following methods, replace `YOUR_GOOGLE_API_KEY` with your Vertex AI API key:
         - You can temporarily set these environment variables in your current shell session using the following commands:
@@ -69,7 +77,7 @@ The Gemini CLI requires you to authenticate with Google's AI services. On initia
           echo 'export GOOGLE_CLOUD_LOCATION="YOUR_PROJECT_LOCATION"' >> ~/.bashrc
           source ~/.bashrc
           ```
-4.  **Cloud Shell:**
+5.  **Cloud Shell:**
     - This option is only available when running in a Google Cloud Shell environment.
     - It automatically uses the credentials of the logged-in user in the Cloud Shell environment.
     - This is the default authentication method when running in Cloud Shell and no other method is configured.

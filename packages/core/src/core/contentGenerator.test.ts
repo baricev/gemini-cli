@@ -9,13 +9,16 @@ import {
   createContentGenerator,
   AuthType,
   createContentGeneratorConfig,
+  ContentGenerator,
 } from './contentGenerator.js';
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
 import { GoogleGenAI } from '@google/genai';
+import { createDeepseekGenerator } from './deepseekGenerator.js';
 import { Config } from '../config/config.js';
 
 vi.mock('../code_assist/codeAssist.js');
 vi.mock('@google/genai');
+vi.mock('./deepseekGenerator.js');
 
 const mockConfig = {} as unknown as Config;
 
@@ -59,6 +62,26 @@ describe('createContentGenerator', () => {
       },
     });
     expect(generator).toBe((mockGenerator as GoogleGenAI).models);
+  });
+
+  it('should create a DeepSeek content generator', async () => {
+    const mockGenerator = {} as unknown as ContentGenerator;
+    vi.mocked(createDeepseekGenerator).mockReturnValue(mockGenerator);
+    const generator = await createContentGenerator(
+      {
+        model: 'test-model',
+        apiKey: 'deepseek-key',
+        authType: AuthType.USE_DEEPSEEK,
+        baseUrl: 'https://api.deepseek.com/v1',
+      },
+      mockConfig,
+    );
+    expect(createDeepseekGenerator).toHaveBeenCalledWith(
+      'deepseek-key',
+      'test-model',
+      'https://api.deepseek.com/v1',
+    );
+    expect(generator).toBe(mockGenerator);
   });
 });
 
@@ -135,5 +158,25 @@ describe('createContentGeneratorConfig', () => {
     );
     expect(config.apiKey).toBeUndefined();
     expect(config.vertexai).toBeUndefined();
+  });
+
+  it('should configure for DeepSeek when DEEPSEEK_API_KEY is set', async () => {
+    process.env.DEEPSEEK_API_KEY = 'ds-key';
+    process.env.DEEPSEEK_BASE_URL = 'https://api.deepseek.com/v1';
+    const config = await createContentGeneratorConfig(
+      mockConfig,
+      AuthType.USE_DEEPSEEK,
+    );
+    expect(config.apiKey).toBe('ds-key');
+    expect(config.baseUrl).toBe('https://api.deepseek.com/v1');
+  });
+
+  it('should not configure for DeepSeek if DEEPSEEK_API_KEY is empty', async () => {
+    process.env.DEEPSEEK_API_KEY = '';
+    const config = await createContentGeneratorConfig(
+      mockConfig,
+      AuthType.USE_DEEPSEEK,
+    );
+    expect(config.apiKey).toBeUndefined();
   });
 });

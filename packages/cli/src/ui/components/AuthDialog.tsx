@@ -77,6 +77,7 @@ export function AuthDialog({
       value: AuthType.USE_GEMINI,
     },
     { label: 'Vertex AI', value: AuthType.USE_VERTEX_AI },
+    { label: 'DeepSeek API Key', value: AuthType.USE_DEEPSEEK },
   ];
 
   const initialAuthIndex = items.findIndex((item) => {

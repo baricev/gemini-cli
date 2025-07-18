@@ -70,6 +70,15 @@ The Vertex AI API provides a [free tier](https://cloud.google.com/vertex-ai/gene
 
 3. (Optionally) Add a billing account on your project to get access to [higher usage limits](https://cloud.google.com/vertex-ai/generative-ai/docs/quotas)
 
+### Use a DeepSeek API key:
+
+1. Obtain an API key from DeepSeek.
+2. Set it as an environment variable in your terminal.
+
+   ```bash
+   export DEEPSEEK_API_KEY="YOUR_API_KEY"
+   ```
+
 For other authentication methods, including Google Workspace accounts, see the [authentication](./docs/cli/authentication.md) guide.
 
 ## Examples
