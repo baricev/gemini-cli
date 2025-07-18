@@ -67,6 +67,19 @@ describe('validateAuthMethod', () => {
     });
   });
 
+  describe('USE_DEEPSEEK', () => {
+    it('should return null if DEEPSEEK_API_KEY is set', () => {
+      process.env.DEEPSEEK_API_KEY = 'key';
+      expect(validateAuthMethod(AuthType.USE_DEEPSEEK)).toBeNull();
+    });
+
+    it('should return an error message if DEEPSEEK_API_KEY is not set', () => {
+      expect(validateAuthMethod(AuthType.USE_DEEPSEEK)).toBe(
+        'DEEPSEEK_API_KEY environment variable not found. Add that to your environment and try again (no reload needed if using .env)!',
+      );
+    });
+  });
+
   it('should return an error message for an invalid auth method', () => {
     expect(validateAuthMethod('invalid-method')).toBe(
       'Invalid auth method selected.',

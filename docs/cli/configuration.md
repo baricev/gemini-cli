@@ -288,6 +288,11 @@ The CLI automatically loads environment variables from an `.env` file. The loadi
   - Your API key for the Gemini API.
   - **Crucial for operation.** The CLI will not function without it.
   - Set this in your shell profile (e.g., `~/.bashrc`, `~/.zshrc`) or an `.env` file.
+- **`DEEPSEEK_API_KEY`**:
+  - Your DeepSeek API key.
+  - Example: `export DEEPSEEK_API_KEY="YOUR_DEEPSEEK_API_KEY"`.
+- **`DEEPSEEK_BASE_URL`**:
+  - Base URL for the DeepSeek API. Defaults to `https://api.deepseek.com/v1`.
 - **`GEMINI_MODEL`**:
   - Specifies the default Gemini model to use.
   - Overrides the hardcoded default
