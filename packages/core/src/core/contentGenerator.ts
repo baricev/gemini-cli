@@ -42,12 +42,14 @@ export enum AuthType {
   LOGIN_WITH_GOOGLE = 'oauth-personal',
   USE_GEMINI = 'gemini-api-key',
   USE_VERTEX_AI = 'vertex-ai',
+  USE_DEEPSEEK = 'deepseek-api-key',
   CLOUD_SHELL = 'cloud-shell',
 }
 
 export type ContentGeneratorConfig = {
   model: string;
   apiKey?: string;
+  baseUrl?: string;
   vertexai?: boolean;
   authType?: AuthType | undefined;
   proxy?: string | undefined;
@@ -61,6 +63,9 @@ export function createContentGeneratorConfig(
   const googleApiKey = process.env.GOOGLE_API_KEY || undefined;
   const googleCloudProject = process.env.GOOGLE_CLOUD_PROJECT || undefined;
   const googleCloudLocation = process.env.GOOGLE_CLOUD_LOCATION || undefined;
+  const deepseekApiKey = process.env.DEEPSEEK_API_KEY || undefined;
+  const deepseekBaseUrl =
+    process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com/v1';
 
   // Use runtime model from config if available, otherwise fallback to parameter or default
   const effectiveModel = config.getModel() || DEFAULT_GEMINI_MODEL;
@@ -88,6 +93,13 @@ export function createContentGeneratorConfig(
       contentGeneratorConfig.proxy,
     );
 
+    return contentGeneratorConfig;
+  }
+
+  if (authType === AuthType.USE_DEEPSEEK && deepseekApiKey) {
+    contentGeneratorConfig.apiKey = deepseekApiKey;
+    contentGeneratorConfig.baseUrl = deepseekBaseUrl;
+    contentGeneratorConfig.vertexai = false;
     return contentGeneratorConfig;
   }
 
@@ -138,6 +150,11 @@ export async function createContentGenerator(
     });
 
     return googleGenAI.models;
+  }
+
+  if (config.authType === AuthType.USE_DEEPSEEK && config.apiKey) {
+    const { DeepSeekGenerator } = await import('./deepseekGenerator.js');
+    return new DeepSeekGenerator(config.apiKey, config.model, config.baseUrl);
   }
 
   throw new Error(

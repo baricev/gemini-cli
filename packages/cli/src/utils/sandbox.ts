@@ -516,6 +516,12 @@ export async function start_sandbox(
   if (process.env.GOOGLE_API_KEY) {
     args.push('--env', `GOOGLE_API_KEY=${process.env.GOOGLE_API_KEY}`);
   }
+  if (process.env.DEEPSEEK_API_KEY) {
+    args.push('--env', `DEEPSEEK_API_KEY=${process.env.DEEPSEEK_API_KEY}`);
+  }
+  if (process.env.DEEPSEEK_BASE_URL) {
+    args.push('--env', `DEEPSEEK_BASE_URL=${process.env.DEEPSEEK_BASE_URL}`);
+  }
 
   // copy GOOGLE_GENAI_USE_VERTEXAI
   if (process.env.GOOGLE_GENAI_USE_VERTEXAI) {

@@ -45,6 +45,19 @@ describe('validateAuthMethod', () => {
     });
   });
 
+  describe('USE_DEEPSEEK', () => {
+    it('should return null if DEEPSEEK_API_KEY is set', () => {
+      process.env.DEEPSEEK_API_KEY = 'ds-key';
+      expect(validateAuthMethod(AuthType.USE_DEEPSEEK)).toBeNull();
+    });
+
+    it('should return an error message if DEEPSEEK_API_KEY is not set', () => {
+      expect(validateAuthMethod(AuthType.USE_DEEPSEEK)).toBe(
+        'DEEPSEEK_API_KEY environment variable not found. Add that to your environment and try again (no reload needed if using .env)!',
+      );
+    });
+  });
+
   describe('USE_VERTEX_AI', () => {
     it('should return null if GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION are set', () => {
       process.env.GOOGLE_CLOUD_PROJECT = 'test-project';
