@@ -14,6 +14,7 @@ import {
   GoogleGenAI,
 } from '@google/genai';
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
+import { HttpModelClient } from './httpModelClient.js';
 import { DEFAULT_GEMINI_MODEL } from '../config/models.js';
 import { Config } from '../config/config.js';
 import { getEffectiveModel } from './modelCheck.js';
@@ -115,6 +116,11 @@ export async function createContentGenerator(
       'User-Agent': `GeminiCLI/${version} (${process.platform}; ${process.arch})`,
     },
   };
+  const baseUrl = process.env.API_BASE_URL;
+  const apiKey = process.env.API_KEY;
+  if (baseUrl && apiKey) {
+    return new HttpModelClient({ baseUrl, apiKey, model: config.model });
+  }
   if (
     config.authType === AuthType.LOGIN_WITH_GOOGLE ||
     config.authType === AuthType.CLOUD_SHELL
