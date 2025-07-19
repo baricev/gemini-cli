@@ -13,6 +13,7 @@ import {
   EmbedContentParameters,
   GoogleGenAI,
 } from '@google/genai';
+import { HttpModelClient } from './httpModelClient.js';
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
 import { DEFAULT_GEMINI_MODEL } from '../config/models.js';
 import { Config } from '../config/config.js';
@@ -125,6 +126,10 @@ export async function createContentGenerator(
       gcConfig,
       sessionId,
     );
+  }
+
+  if (process.env.API_BASE_URL && config.apiKey) {
+    return new HttpModelClient(process.env.API_BASE_URL, config.apiKey);
   }
 
   if (

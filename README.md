@@ -72,6 +72,18 @@ The Vertex AI API provides a [free tier](https://cloud.google.com/vertex-ai/gene
 
 For other authentication methods, including Google Workspace accounts, see the [authentication](./docs/cli/authentication.md) guide.
 
+### Use a generic API endpoint:
+
+If you have a model server that exposes Gemini compatible APIs, you can direct the CLI to use it by setting an API base URL and key:
+
+1. Set `API_BASE_URL` to the base URL of your server.
+2. Set `GEMINI_API_KEY` with your API key.
+
+```bash
+export API_BASE_URL="https://example.com/api"
+export GEMINI_API_KEY="YOUR_API_KEY"
+```
+
 ## Examples
 
 Once the CLI is running, you can start interacting with Gemini from your shell.
