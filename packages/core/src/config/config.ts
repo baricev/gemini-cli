@@ -44,6 +44,7 @@ import {
   DEFAULT_GEMINI_EMBEDDING_MODEL,
   DEFAULT_GEMINI_FLASH_MODEL,
 } from './models.js';
+import { Provider } from '../core/providers.js';
 import { ClearcutLogger } from '../telemetry/clearcut-logger/clearcut-logger.js';
 
 export enum ApprovalMode {
@@ -115,6 +116,7 @@ export type FlashFallbackHandler = (
 
 export interface ConfigParameters {
   sessionId: string;
+  provider?: Provider;
   embeddingModel?: string;
   sandbox?: SandboxConfig;
   targetDir: string;
@@ -159,6 +161,7 @@ export interface ConfigParameters {
 export class Config {
   private toolRegistry!: ToolRegistry;
   private readonly sessionId: string;
+  private readonly provider: Provider;
   private contentGeneratorConfig!: ContentGeneratorConfig;
   private readonly embeddingModel: string;
   private readonly sandbox: SandboxConfig | undefined;
@@ -211,6 +214,7 @@ export class Config {
 
   constructor(params: ConfigParameters) {
     this.sessionId = params.sessionId;
+    this.provider = params.provider ?? Provider.GEMINI;
     this.embeddingModel =
       params.embeddingModel ?? DEFAULT_GEMINI_EMBEDDING_MODEL;
     this.sandbox = params.sandbox;
@@ -288,6 +292,7 @@ export class Config {
     this.contentGeneratorConfig = createContentGeneratorConfig(
       this,
       authMethod,
+      this.provider,
     );
 
     this.geminiClient = new GeminiClient(this);
@@ -303,6 +308,10 @@ export class Config {
 
   getContentGeneratorConfig(): ContentGeneratorConfig {
     return this.contentGeneratorConfig;
+  }
+
+  getProvider(): Provider {
+    return this.provider;
   }
 
   getModel(): string {
@@ -344,7 +353,7 @@ export class Config {
   }
 
   async getUserTier(): Promise<UserTierId | undefined> {
-    if (!this.geminiClient) {
+    if (!this.geminiClient || !this.geminiClient.isInitialized()) {
       return undefined;
     }
     const generator = this.geminiClient.getContentGenerator();

@@ -14,10 +14,12 @@ import {
   GoogleGenAI,
 } from '@google/genai';
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
-import { DEFAULT_GEMINI_MODEL } from '../config/models.js';
+import { DEFAULT_GEMINI_MODEL, getDefaultModelForProvider } from '../config/models.js';
 import { Config } from '../config/config.js';
 import { getEffectiveModel } from './modelCheck.js';
 import { UserTierId } from '../code_assist/types.js';
+import { Provider } from './providers.js';
+import { DeepSeekContentGenerator } from '../providers/deepseek.js';
 
 /**
  * Interface abstracting the core functionalities for generating content and counting tokens.
@@ -41,13 +43,16 @@ export interface ContentGenerator {
 export enum AuthType {
   LOGIN_WITH_GOOGLE = 'oauth-personal',
   USE_GEMINI = 'gemini-api-key',
+  USE_DEEPSEEK = 'deepseek-api-key',
   USE_VERTEX_AI = 'vertex-ai',
   CLOUD_SHELL = 'cloud-shell',
 }
 
 export type ContentGeneratorConfig = {
+  provider: Provider;
   model: string;
   apiKey?: string;
+  deepseekApiKey?: string;
   vertexai?: boolean;
   authType?: AuthType | undefined;
   proxy?: string | undefined;
@@ -56,19 +61,26 @@ export type ContentGeneratorConfig = {
 export function createContentGeneratorConfig(
   config: Config,
   authType: AuthType | undefined,
+  provider?: Provider,
 ): ContentGeneratorConfig {
   const geminiApiKey = process.env.GEMINI_API_KEY || undefined;
+  const deepseekApiKey = process.env.DEEPSEEK_API_KEY || undefined;
   const googleApiKey = process.env.GOOGLE_API_KEY || undefined;
   const googleCloudProject = process.env.GOOGLE_CLOUD_PROJECT || undefined;
   const googleCloudLocation = process.env.GOOGLE_CLOUD_LOCATION || undefined;
 
-  // Use runtime model from config if available, otherwise fallback to parameter or default
-  const effectiveModel = config.getModel() || DEFAULT_GEMINI_MODEL;
+  // Determine provider from authType if not explicitly provided
+  const effectiveProvider = provider || (authType === AuthType.USE_DEEPSEEK ? Provider.DEEPSEEK : Provider.GEMINI);
+  
+  // Use runtime model from config if available, otherwise use provider default
+  const effectiveModel = config.getModel() || getDefaultModelForProvider(effectiveProvider);
 
   const contentGeneratorConfig: ContentGeneratorConfig = {
+    provider: effectiveProvider,
     model: effectiveModel,
     authType,
     proxy: config?.getProxy(),
+    deepseekApiKey,
   };
 
   // If we are using Google auth or we are in Cloud Shell, there is nothing else to validate for now
@@ -88,6 +100,11 @@ export function createContentGeneratorConfig(
       contentGeneratorConfig.proxy,
     );
 
+    return contentGeneratorConfig;
+  }
+
+  if (authType === AuthType.USE_DEEPSEEK && deepseekApiKey) {
+    contentGeneratorConfig.deepseekApiKey = deepseekApiKey;
     return contentGeneratorConfig;
   }
 
@@ -115,6 +132,7 @@ export async function createContentGenerator(
       'User-Agent': `GeminiCLI/${version} (${process.platform}; ${process.arch})`,
     },
   };
+  
   if (
     config.authType === AuthType.LOGIN_WITH_GOOGLE ||
     config.authType === AuthType.CLOUD_SHELL
@@ -125,6 +143,13 @@ export async function createContentGenerator(
       gcConfig,
       sessionId,
     );
+  }
+
+  if (config.authType === AuthType.USE_DEEPSEEK) {
+    if (!config.deepseekApiKey) {
+      throw new Error('DeepSeek API key is required but not provided');
+    }
+    return new DeepSeekContentGenerator(config.deepseekApiKey, config.proxy);
   }
 
   if (

@@ -158,6 +158,7 @@ describe('Server Config (config.ts)', () => {
       expect(createContentGeneratorConfig).toHaveBeenCalledWith(
         config,
         authType,
+        config.getProvider(),
       );
       // Verify that contentGeneratorConfig is updated with the new model
       expect(config.getContentGeneratorConfig()).toEqual(mockContentConfig);

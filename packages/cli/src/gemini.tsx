@@ -32,6 +32,7 @@ import {
   Config,
   EditTool,
   ShellTool,
+  Provider,
   WriteFileTool,
   sessionId,
   logUserPrompt,
@@ -328,16 +329,31 @@ async function validateNonInterActiveAuth(
   nonInteractiveConfig: Config,
 ) {
   // making a special case for the cli. many headless environments might not have a settings.json set
-  // so if GEMINI_API_KEY is set, we'll use that. However since the oauth things are interactive anyway, we'll
+  // so if GEMINI_API_KEY or DEEPSEEK_API_KEY is set, we'll use that. However since the oauth things are interactive anyway, we'll
   // still expect that exists
-  if (!selectedAuthType && !process.env.GEMINI_API_KEY) {
-    console.error(
-      `Please set an Auth method in your ${USER_SETTINGS_PATH} OR specify GEMINI_API_KEY env variable file before running`,
-    );
-    process.exit(1);
-  }
+  if (!selectedAuthType) {
+    // Determine auth type based on provider and available API keys
+    const provider = nonInteractiveConfig.getProvider();
+    const hasGeminiKey = !!process.env.GEMINI_API_KEY;
+    const hasDeepSeekKey = !!process.env.DEEPSEEK_API_KEY;
 
-  selectedAuthType = selectedAuthType || AuthType.USE_GEMINI;
+    if (provider === Provider.DEEPSEEK && !hasDeepSeekKey) {
+      console.error(
+        `DeepSeek provider requires DEEPSEEK_API_KEY environment variable. Please set it and try again.`,
+      );
+      process.exit(1);
+    }
+
+    if (provider === Provider.GEMINI && !hasGeminiKey) {
+      console.error(
+        `Gemini provider requires GEMINI_API_KEY environment variable. Please set it and try again.`,
+      );
+      process.exit(1);
+    }
+
+    // Default to appropriate auth type based on provider
+    selectedAuthType = provider === Provider.DEEPSEEK ? AuthType.USE_DEEPSEEK : AuthType.USE_GEMINI;
+  }
   const err = validateAuthMethod(selectedAuthType);
   if (err != null) {
     console.error(err);

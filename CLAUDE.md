@@ -1,6 +1,7 @@
 # Instructions
 
-- Read the DEEPSEEK_API.md file
+- Read the DEEPSEEK_API.md file.
+- Read through the code in this codebase.
 - Provide a detailed implementation plan for extending this codebase to include DeepSeek models and support the DeepSeek API. Users should be able to chooose a "provider" and "model" from the cli.
 
 ## Files to help you navigate and understand this repository

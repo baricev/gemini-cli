@@ -19,6 +19,8 @@ import {
   TelemetryTarget,
   MCPServerConfig,
   IDE_SERVER_NAME,
+  Provider,
+  isValidProvider,
 } from '@google/gemini-cli-core';
 import { Settings } from './settings.js';
 
@@ -37,6 +39,7 @@ const logger = {
 };
 
 export interface CliArgs {
+  provider: string | undefined;
   model: string | undefined;
   sandbox: boolean | string | undefined;
   sandboxImage: string | undefined;
@@ -68,6 +71,12 @@ export async function parseArguments(): Promise<CliArgs> {
       '$0 [options]',
       'Gemini CLI - Launch an interactive CLI, use -p/--prompt for non-interactive mode',
     )
+    .option('provider', {
+      type: 'string',
+      description: 'AI provider (gemini|deepseek)',
+      default: 'gemini',
+      choices: ['gemini', 'deepseek']
+    })
     .option('model', {
       alias: 'm',
       type: 'string',
@@ -368,8 +377,16 @@ export async function loadCliConfig(
 
   const sandboxConfig = await loadSandboxConfig(settings, argv);
 
+  // Validate and convert provider string to Provider enum
+  const providerString = argv.provider || 'gemini';
+  if (!isValidProvider(providerString)) {
+    throw new Error(`Invalid provider: ${providerString}. Supported providers: gemini, deepseek`);
+  }
+  const provider = providerString as Provider;
+
   return new Config({
     sessionId,
+    provider,
     embeddingModel: DEFAULT_GEMINI_EMBEDDING_MODEL,
     sandbox: sandboxConfig,
     targetDir: process.cwd(),

@@ -10,6 +10,7 @@ import {
   AuthType,
   createContentGeneratorConfig,
 } from './contentGenerator.js';
+import { Provider } from './providers.js';
 import { createCodeAssistContentGenerator } from '../code_assist/codeAssist.js';
 import { GoogleGenAI } from '@google/genai';
 import { Config } from '../config/config.js';
@@ -27,6 +28,7 @@ describe('createContentGenerator', () => {
     );
     const generator = await createContentGenerator(
       {
+        provider: Provider.GEMINI,
         model: 'test-model',
         authType: AuthType.LOGIN_WITH_GOOGLE,
       },
@@ -43,6 +45,7 @@ describe('createContentGenerator', () => {
     vi.mocked(GoogleGenAI).mockImplementation(() => mockGenerator as never);
     const generator = await createContentGenerator(
       {
+        provider: Provider.GEMINI,
         model: 'test-model',
         apiKey: 'test-api-key',
         authType: AuthType.USE_GEMINI,
