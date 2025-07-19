@@ -1,0 +1,877 @@
+{
+  "type": "directory",
+  "name": ".",
+  "path": ".",
+  "contents": [
+    {
+      "type": "file",
+      "name": "CLAUDE.md",
+      "path": "CLAUDE.md"
+    },
+    {
+      "type": "file",
+      "name": "DEEPSEEK_API.md",
+      "path": "DEEPSEEK_API.md"
+    },
+    {
+      "type": "file",
+      "name": "FILE_TREE_MAP.json",
+      "path": "FILE_TREE_MAP.json"
+    },
+    {
+      "type": "file",
+      "name": "REPO_MAP.md",
+      "path": "REPO_MAP.md"
+    },
+    {
+      "type": "file",
+      "name": ".editorconfig",
+      "path": ".editorconfig"
+    },
+    {
+      "type": "directory",
+      "name": ".gcp",
+      "path": "./.gcp",
+      "contents": [
+        {
+          "type": "file",
+          "name": "Dockerfile.gemini-code-builder",
+          "path": ".gcp/Dockerfile.gemini-code-builder"
+        },
+        {
+          "type": "file",
+          "name": "release-docker.yaml",
+          "path": ".gcp/release-docker.yaml"
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": ".gemini",
+      "path": "./.gemini",
+      "contents": [
+        {
+          "type": "file",
+          "name": "config.yaml",
+          "path": ".gemini/config.yaml"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": ".gitattributes",
+      "path": ".gitattributes"
+    },
+    {
+      "type": "directory",
+      "name": ".github",
+      "path": "./.github",
+      "contents": [
+        {
+          "type": "file",
+          "name": "CODEOWNERS",
+          "path": ".github/CODEOWNERS"
+        },
+        {
+          "type": "directory",
+          "name": "ISSUE_TEMPLATE",
+          "path": "./.github/ISSUE_TEMPLATE",
+          "contents": [
+            {
+              "type": "file",
+              "name": "bug_report.yml",
+              "path": ".github/ISSUE_TEMPLATE/bug_report.yml"
+            },
+            {
+              "type": "file",
+              "name": "feature_request.yml",
+              "path": ".github/ISSUE_TEMPLATE/feature_request.yml"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "actions",
+          "path": "./.github/actions",
+          "contents": [
+            {
+              "type": "directory",
+              "name": "post-coverage-comment",
+              "path": ".github/actions/post-coverage-comment",
+              "contents": []
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "pull_request_template.md",
+          "path": ".github/pull_request_template.md"
+        },
+        {
+          "type": "directory",
+          "name": "scripts",
+          "path": "./.github/scripts",
+          "contents": [
+            {
+              "type": "file",
+              "name": "pr-triage.sh",
+              "path": ".github/scripts/pr-triage.sh"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "workflows",
+          "path": "./.github/workflows",
+          "contents": [
+            {
+              "type": "file",
+              "name": "ci.yml",
+              "path": ".github/workflows/ci.yml"
+            },
+            {
+              "type": "file",
+              "name": "community-report.yml",
+              "path": ".github/workflows/community-report.yml"
+            },
+            {
+              "type": "file",
+              "name": "e2e.yml",
+              "path": ".github/workflows/e2e.yml"
+            },
+            {
+              "type": "file",
+              "name": "gemini-automated-issue-triage.yml",
+              "path": ".github/workflows/gemini-automated-issue-triage.yml"
+            },
+            {
+              "type": "file",
+              "name": "gemini-scheduled-issue-triage.yml",
+              "path": ".github/workflows/gemini-scheduled-issue-triage.yml"
+            },
+            {
+              "type": "file",
+              "name": "gemini-scheduled-pr-triage.yml",
+              "path": ".github/workflows/gemini-scheduled-pr-triage.yml"
+            },
+            {
+              "type": "file",
+              "name": "release.yml",
+              "path": ".github/workflows/release.yml"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": ".gitignore",
+      "path": ".gitignore"
+    },
+    {
+      "type": "file",
+      "name": ".npmrc",
+      "path": ".npmrc"
+    },
+    {
+      "type": "file",
+      "name": ".prettierrc.json",
+      "path": ".prettierrc.json"
+    },
+    {
+      "type": "directory",
+      "name": ".vscode",
+      "path": "./.vscode",
+      "contents": [
+        {
+          "type": "file",
+          "name": "launch.json",
+          "path": ".vscode/launch.json"
+        },
+        {
+          "type": "file",
+          "name": "settings.json",
+          "path": ".vscode/settings.json"
+        },
+        {
+          "type": "file",
+          "name": "tasks.json",
+          "path": ".vscode/tasks.json"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "CONTRIBUTING.md",
+      "path": "CONTRIBUTING.md"
+    },
+    {
+      "type": "file",
+      "name": "Dockerfile",
+      "path": "Dockerfile"
+    },
+    {
+      "type": "file",
+      "name": "GEMINI.md",
+      "path": "GEMINI.md"
+    },
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "path": "LICENSE"
+    },
+    {
+      "type": "file",
+      "name": "Makefile",
+      "path": "Makefile"
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "path": "README.md"
+    },
+    {
+      "type": "file",
+      "name": "ROADMAP.md",
+      "path": "ROADMAP.md"
+    },
+    {
+      "type": "directory",
+      "name": "docs",
+      "path": "./docs",
+      "contents": [
+        {
+          "type": "file",
+          "name": "Uninstall.md",
+          "path": "docs/Uninstall.md"
+        },
+        {
+          "type": "file",
+          "name": "architecture.md",
+          "path": "docs/architecture.md"
+        },
+        {
+          "type": "directory",
+          "name": "assets",
+          "path": "./docs/assets",
+          "contents": [
+            {
+              "type": "file",
+              "name": "connected_devtools.png",
+              "path": "docs/assets/connected_devtools.png"
+            },
+            {
+              "type": "file",
+              "name": "gemini-screenshot.png",
+              "path": "docs/assets/gemini-screenshot.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-ansi-light.png",
+              "path": "docs/assets/theme-ansi-light.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-ansi.png",
+              "path": "docs/assets/theme-ansi.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-atom-one.png",
+              "path": "docs/assets/theme-atom-one.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-ayu-light.png",
+              "path": "docs/assets/theme-ayu-light.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-ayu.png",
+              "path": "docs/assets/theme-ayu.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-default-light.png",
+              "path": "docs/assets/theme-default-light.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-default.png",
+              "path": "docs/assets/theme-default.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-dracula.png",
+              "path": "docs/assets/theme-dracula.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-github-light.png",
+              "path": "docs/assets/theme-github-light.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-github.png",
+              "path": "docs/assets/theme-github.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-google-light.png",
+              "path": "docs/assets/theme-google-light.png"
+            },
+            {
+              "type": "file",
+              "name": "theme-xcode-light.png",
+              "path": "docs/assets/theme-xcode-light.png"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "checkpointing.md",
+          "path": "docs/checkpointing.md"
+        },
+        {
+          "type": "directory",
+          "name": "cli",
+          "path": "./docs/cli",
+          "contents": [
+            {
+              "type": "file",
+              "name": "authentication.md",
+              "path": "docs/cli/authentication.md"
+            },
+            {
+              "type": "file",
+              "name": "commands.md",
+              "path": "docs/cli/commands.md"
+            },
+            {
+              "type": "file",
+              "name": "configuration.md",
+              "path": "docs/cli/configuration.md"
+            },
+            {
+              "type": "file",
+              "name": "index.md",
+              "path": "docs/cli/index.md"
+            },
+            {
+              "type": "file",
+              "name": "themes.md",
+              "path": "docs/cli/themes.md"
+            },
+            {
+              "type": "file",
+              "name": "token-caching.md",
+              "path": "docs/cli/token-caching.md"
+            },
+            {
+              "type": "file",
+              "name": "tutorials.md",
+              "path": "docs/cli/tutorials.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "core",
+          "path": "./docs/core",
+          "contents": [
+            {
+              "type": "file",
+              "name": "index.md",
+              "path": "docs/core/index.md"
+            },
+            {
+              "type": "file",
+              "name": "memport.md",
+              "path": "docs/core/memport.md"
+            },
+            {
+              "type": "file",
+              "name": "tools-api.md",
+              "path": "docs/core/tools-api.md"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "deployment.md",
+          "path": "docs/deployment.md"
+        },
+        {
+          "type": "directory",
+          "name": "examples",
+          "path": "./docs/examples",
+          "contents": [
+            {
+              "type": "file",
+              "name": "proxy-script.md",
+              "path": "docs/examples/proxy-script.md"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "extension.md",
+          "path": "docs/extension.md"
+        },
+        {
+          "type": "file",
+          "name": "index.md",
+          "path": "docs/index.md"
+        },
+        {
+          "type": "file",
+          "name": "integration-tests.md",
+          "path": "docs/integration-tests.md"
+        },
+        {
+          "type": "file",
+          "name": "npm.md",
+          "path": "docs/npm.md"
+        },
+        {
+          "type": "file",
+          "name": "quota-and-pricing.md",
+          "path": "docs/quota-and-pricing.md"
+        },
+        {
+          "type": "file",
+          "name": "sandbox.md",
+          "path": "docs/sandbox.md"
+        },
+        {
+          "type": "file",
+          "name": "telemetry.md",
+          "path": "docs/telemetry.md"
+        },
+        {
+          "type": "directory",
+          "name": "tools",
+          "path": "./docs/tools",
+          "contents": [
+            {
+              "type": "file",
+              "name": "file-system.md",
+              "path": "docs/tools/file-system.md"
+            },
+            {
+              "type": "file",
+              "name": "index.md",
+              "path": "docs/tools/index.md"
+            },
+            {
+              "type": "file",
+              "name": "mcp-server.md",
+              "path": "docs/tools/mcp-server.md"
+            },
+            {
+              "type": "file",
+              "name": "memory.md",
+              "path": "docs/tools/memory.md"
+            },
+            {
+              "type": "file",
+              "name": "multi-file.md",
+              "path": "docs/tools/multi-file.md"
+            },
+            {
+              "type": "file",
+              "name": "shell.md",
+              "path": "docs/tools/shell.md"
+            },
+            {
+              "type": "file",
+              "name": "web-fetch.md",
+              "path": "docs/tools/web-fetch.md"
+            },
+            {
+              "type": "file",
+              "name": "web-search.md",
+              "path": "docs/tools/web-search.md"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "tos-privacy.md",
+          "path": "docs/tos-privacy.md"
+        },
+        {
+          "type": "file",
+          "name": "troubleshooting.md",
+          "path": "docs/troubleshooting.md"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "esbuild.config.js",
+      "path": "esbuild.config.js"
+    },
+    {
+      "type": "directory",
+      "name": "eslint-rules",
+      "path": "./eslint-rules",
+      "contents": [
+        {
+          "type": "file",
+          "name": "no-relative-cross-package-imports.js",
+          "path": "eslint-rules/no-relative-cross-package-imports.js"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "eslint.config.js",
+      "path": "eslint.config.js"
+    },
+    {
+      "type": "directory",
+      "name": "integration-tests",
+      "path": "./integration-tests",
+      "contents": [
+        {
+          "type": "file",
+          "name": "file-system.test.js",
+          "path": "integration-tests/file-system.test.js"
+        },
+        {
+          "type": "file",
+          "name": "google_web_search.test.js",
+          "path": "integration-tests/google_web_search.test.js"
+        },
+        {
+          "type": "file",
+          "name": "list_directory.test.js",
+          "path": "integration-tests/list_directory.test.js"
+        },
+        {
+          "type": "file",
+          "name": "read_many_files.test.js",
+          "path": "integration-tests/read_many_files.test.js"
+        },
+        {
+          "type": "file",
+          "name": "replace.test.js",
+          "path": "integration-tests/replace.test.js"
+        },
+        {
+          "type": "file",
+          "name": "run-tests.js",
+          "path": "integration-tests/run-tests.js"
+        },
+        {
+          "type": "file",
+          "name": "run_shell_command.test.js",
+          "path": "integration-tests/run_shell_command.test.js"
+        },
+        {
+          "type": "file",
+          "name": "save_memory.test.js",
+          "path": "integration-tests/save_memory.test.js"
+        },
+        {
+          "type": "file",
+          "name": "simple-mcp-server.test.js",
+          "path": "integration-tests/simple-mcp-server.test.js"
+        },
+        {
+          "type": "file",
+          "name": "test-helper.js",
+          "path": "integration-tests/test-helper.js"
+        },
+        {
+          "type": "file",
+          "name": "write_file.test.js",
+          "path": "integration-tests/write_file.test.js"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "package-lock.json",
+      "path": "package-lock.json"
+    },
+    {
+      "type": "file",
+      "name": "package.json",
+      "path": "package.json"
+    },
+    {
+      "type": "directory",
+      "name": "packages",
+      "path": "./packages",
+      "contents": [
+        {
+          "type": "directory",
+          "name": "cli",
+          "path": "./packages/cli",
+          "contents": [
+            {
+              "type": "file",
+              "name": "index.ts",
+              "path": "packages/cli/index.ts"
+            },
+            {
+              "type": "file",
+              "name": "package.json",
+              "path": "packages/cli/package.json"
+            },
+            {
+              "type": "directory",
+              "name": "src",
+              "path": "packages/cli/src",
+              "contents": []
+            },
+            {
+              "type": "file",
+              "name": "tsconfig.json",
+              "path": "packages/cli/tsconfig.json"
+            },
+            {
+              "type": "file",
+              "name": "vitest.config.ts",
+              "path": "packages/cli/vitest.config.ts"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "core",
+          "path": "./packages/core",
+          "contents": [
+            {
+              "type": "file",
+              "name": "index.ts",
+              "path": "packages/core/index.ts"
+            },
+            {
+              "type": "file",
+              "name": "package-lock.json",
+              "path": "packages/core/package-lock.json"
+            },
+            {
+              "type": "file",
+              "name": "package.json",
+              "path": "packages/core/package.json"
+            },
+            {
+              "type": "directory",
+              "name": "src",
+              "path": "packages/core/src",
+              "contents": []
+            },
+            {
+              "type": "file",
+              "name": "test-setup.ts",
+              "path": "packages/core/test-setup.ts"
+            },
+            {
+              "type": "file",
+              "name": "tsconfig.json",
+              "path": "packages/core/tsconfig.json"
+            },
+            {
+              "type": "file",
+              "name": "vitest.config.ts",
+              "path": "packages/core/vitest.config.ts"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "vscode-ide-companion",
+          "path": "./packages/vscode-ide-companion",
+          "contents": [
+            {
+              "type": "directory",
+              "name": ".vscode",
+              "path": "packages/vscode-ide-companion/.vscode",
+              "contents": []
+            },
+            {
+              "type": "file",
+              "name": ".vscodeignore",
+              "path": "packages/vscode-ide-companion/.vscodeignore"
+            },
+            {
+              "type": "file",
+              "name": "LICENSE",
+              "path": "packages/vscode-ide-companion/LICENSE"
+            },
+            {
+              "type": "file",
+              "name": "README.md",
+              "path": "packages/vscode-ide-companion/README.md"
+            },
+            {
+              "type": "directory",
+              "name": "assets",
+              "path": "packages/vscode-ide-companion/assets",
+              "contents": []
+            },
+            {
+              "type": "file",
+              "name": "esbuild.js",
+              "path": "packages/vscode-ide-companion/esbuild.js"
+            },
+            {
+              "type": "file",
+              "name": "eslint.config.mjs",
+              "path": "packages/vscode-ide-companion/eslint.config.mjs"
+            },
+            {
+              "type": "file",
+              "name": "package-lock.json",
+              "path": "packages/vscode-ide-companion/package-lock.json"
+            },
+            {
+              "type": "file",
+              "name": "package.json",
+              "path": "packages/vscode-ide-companion/package.json"
+            },
+            {
+              "type": "directory",
+              "name": "src",
+              "path": "packages/vscode-ide-companion/src",
+              "contents": []
+            },
+            {
+              "type": "file",
+              "name": "tsconfig.json",
+              "path": "packages/vscode-ide-companion/tsconfig.json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "scripts",
+      "path": "./scripts",
+      "contents": [
+        {
+          "type": "file",
+          "name": "build.js",
+          "path": "scripts/build.js"
+        },
+        {
+          "type": "file",
+          "name": "build_package.js",
+          "path": "scripts/build_package.js"
+        },
+        {
+          "type": "file",
+          "name": "build_sandbox.js",
+          "path": "scripts/build_sandbox.js"
+        },
+        {
+          "type": "file",
+          "name": "check-build-status.js",
+          "path": "scripts/check-build-status.js"
+        },
+        {
+          "type": "file",
+          "name": "clean.js",
+          "path": "scripts/clean.js"
+        },
+        {
+          "type": "file",
+          "name": "copy_bundle_assets.js",
+          "path": "scripts/copy_bundle_assets.js"
+        },
+        {
+          "type": "file",
+          "name": "copy_files.js",
+          "path": "scripts/copy_files.js"
+        },
+        {
+          "type": "file",
+          "name": "create_alias.sh",
+          "path": "scripts/create_alias.sh"
+        },
+        {
+          "type": "file",
+          "name": "generate-git-commit-info.js",
+          "path": "scripts/generate-git-commit-info.js"
+        },
+        {
+          "type": "file",
+          "name": "get-release-version.js",
+          "path": "scripts/get-release-version.js"
+        },
+        {
+          "type": "file",
+          "name": "local_telemetry.js",
+          "path": "scripts/local_telemetry.js"
+        },
+        {
+          "type": "file",
+          "name": "prepare-package.js",
+          "path": "scripts/prepare-package.js"
+        },
+        {
+          "type": "file",
+          "name": "sandbox_command.js",
+          "path": "scripts/sandbox_command.js"
+        },
+        {
+          "type": "file",
+          "name": "start.js",
+          "path": "scripts/start.js"
+        },
+        {
+          "type": "file",
+          "name": "telemetry.js",
+          "path": "scripts/telemetry.js"
+        },
+        {
+          "type": "file",
+          "name": "telemetry_gcp.js",
+          "path": "scripts/telemetry_gcp.js"
+        },
+        {
+          "type": "file",
+          "name": "telemetry_utils.js",
+          "path": "scripts/telemetry_utils.js"
+        },
+        {
+          "type": "directory",
+          "name": "tests",
+          "path": "./scripts/tests",
+          "contents": [
+            {
+              "type": "file",
+              "name": "get-release-version.test.js",
+              "path": "scripts/tests/get-release-version.test.js"
+            },
+            {
+              "type": "file",
+              "name": "test-setup.ts",
+              "path": "scripts/tests/test-setup.ts"
+            },
+            {
+              "type": "file",
+              "name": "vitest.config.ts",
+              "path": "scripts/tests/vitest.config.ts"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "version.js",
+          "path": "scripts/version.js"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "tsconfig.json",
+      "path": "tsconfig.json"
+    }
+  ]
+}
